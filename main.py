@@ -9,7 +9,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))+"/data"
 
 base_files_dir = input("Папка с файлами по умолчанию (можно не указывать): ")
 if base_files_dir != "":
-    base_files_dir = dir_path + "/" + base_files_dir
+    base_files_dir = os.path.dirname(os.path.realpath(__file__)) + "/" + base_files_dir
 task_dir = input("Введите название папки с заданиями: ")
 
 counter = 1
