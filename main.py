@@ -9,7 +9,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))+"/data"
 
 base_files_dir = input("Папка с файлами по умолчанию (можно не указывать): ")
 if base_files_dir != "":
-    base_files_dir = os.path.dirname(os.path.realpath(__file__)) + "/" + base_files_dir
+    base_files_dir = dir_path + "/" + base_files_dir
 task_dir = input("Введите название папки с заданиями: ")
 
 counter = 1
@@ -22,6 +22,7 @@ for student in os.listdir(path=dir_path):
         dirs = {}
         print(student + ": папка не обнаружена")
         print("Доступные варианты: ")
+        counter = 0
         for stud_dir in files:
             if os.path.isdir(dir_path+"/"+student+"/"+stud_dir):
                 print(str(counter)+")", stud_dir)
