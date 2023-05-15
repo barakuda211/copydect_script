@@ -2,8 +2,10 @@
 import lib.copydetect
 from lib.copydetect import CopyDetector
 import pygments
+import shutil
 import os
 
+excluded_dirs = ['Properties','obj']
 
 dir_path = os.path.dirname(os.path.realpath(__file__))+"/data"
 
@@ -39,7 +41,14 @@ for student in os.listdir(path=dir_path):
 
     else:
         print(student+": папка обнаружена")
-    test_dirs.append(dir_path+"/"+student+"/"+cur_student_task_dir)
+    detected_dir = dir_path+"/"+student+"/"+cur_student_task_dir
+    test_dirs.append(detected_dir)
+    for stud_root, stud_dirs, stud_files in os.walk(detected_dir):
+        for stud_dir in stud_dirs:
+            if stud_dir in \
+                    excluded_dirs:
+                shutil.rmtree(stud_root+'/'+stud_dir)
+
 
 print(test_dirs)
 if base_files_dir == "":
